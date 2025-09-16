@@ -106,7 +106,7 @@ The above mapping routes AUX1..AUX4 to Motor1..Motor4 accordingly. For more info
 ## Example Python Scripts
 
 ### `scripts/connect_pixhawk.py`
-```
+```python
 #!/usr/bin/env python3
 from future import print_function
 import time
@@ -138,7 +138,7 @@ sudo ~/dronekit-py39/bin/python scripts/connect_pixhawk.py
 ---
 
 ### `scripts/arm_and_takeoff.py`
-```
+```python
 #!/usr/bin/env python3
 from future import print_function
 import time

@@ -54,7 +54,7 @@ text
 - UART device is available at `/dev/serial0`.
 - Add your user to the dialout group for serial device permissions:
 
-sudo usermod -aG dialout $USER
+'''sudo usermod -aG dialout $USER'''
 
 text
 

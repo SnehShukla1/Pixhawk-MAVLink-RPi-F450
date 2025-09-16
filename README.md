@@ -46,36 +46,33 @@ Enable UART and disable serial login shell via:
 ```bash
 sudo raspi-config
 ```
-text
 
 - Navigate: Interface Options → Serial Port → Login shell over serial? **No** → Enable serial port hardware? **Yes**
 - Reboot your Pi.
 - UART device is available at `/dev/serial0`.
 - Add your user to the dialout group for serial device permissions:
-
+```
 sudo usermod -aG dialout $USER
-
-text
+```
 
 Log out and back in (or reboot) for permissions to take effect.
 
 Use Python 3.9 for DroneKit support. Create a virtual environment and install dependencies:
-
+```
 python3.9 -m venv ~/dronekit-py39
 source ~/dronekit-py39/bin/activate
 pip install --upgrade pip
 pip install dronekit pymavlink future pyserial
-
-text
+```
 
 ---
 
 ## MAVProxy (handy CLI for testing)
 
 Install MAVProxy inside the virtual environment or globally. Connect using:
-
+```
 mavproxy.py --master=/dev/serial0 --baudrate 57600 --aircraft MyCopter
-
+```
 text
 
 This opens a MAVLink console with modules for status, parameters, and motor testing.
@@ -85,24 +82,22 @@ This opens a MAVLink console with modules for status, parameters, and motor test
 ## Pixhawk Configuration (AUX motor mapping & tests)
 
 If motors are wired to AUX outputs (not MAIN), map AUX1..AUX4 to motors 1..4 and ensure AUX pins are PWM outputs by running these commands in MAVProxy or via a ground control station:
-
+```
 param set BRD_PWM_COUNT 4
 param set SERVO9_FUNCTION 33
 param set SERVO10_FUNCTION 34
 param set SERVO11_FUNCTION 35
 param set SERVO12_FUNCTION 36
 reboot
-
-text
+```
 
 Test each motor safely (props off):
-
+```
 motortest 1 1 1200 5
 motortest 2 1 1200 5
 motortest 3 1 1200 5
 motortest 4 1 1200 5
-
-text
+```
 
 The above mapping routes AUX1..AUX4 to Motor1..Motor4 accordingly. For more information about the `BRD_PWM_COUNT` and output functions, consult ArduPilot’s documentation.
 
@@ -111,7 +106,7 @@ The above mapping routes AUX1..AUX4 to Motor1..Motor4 accordingly. For more info
 ## Example Python Scripts
 
 ### `scripts/connect_pixhawk.py`
-
+```
 #!/usr/bin/env python3
 from future import print_function
 import time
@@ -133,19 +128,17 @@ vehicle.groundspeed,
 time.sleep(1)
 
 vehicle.close()
-
-text
+```
 
 Run inside your virtual environment:
-
+```
 sudo ~/dronekit-py39/bin/python scripts/connect_pixhawk.py
-
-text
+```
 
 ---
 
 ### `scripts/arm_and_takeoff.py`
-
+```
 #!/usr/bin/env python3
 from future import print_function
 import time
@@ -189,15 +182,12 @@ v.close()
 
 if name == "main":
 main()
-
-text
+```
 
 Run inside your virtual environment:
-
+```
 sudo ~/dronekit-py39/bin/python scripts/arm_and_takeoff.py
-
-text
-
+```
 ---
 
 ## Bring-up Checklist

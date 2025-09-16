@@ -45,7 +45,7 @@ text
 
 Enable UART and disable serial login shell via:
 
-sudo raspi-config
+```sudo raspi-config```
 
 text
 

@@ -43,9 +43,9 @@ text
 ## Raspberry Pi Setup
 
 Enable UART and disable serial login shell via:
-
+```bash
 sudo raspi-config
-
+```
 text
 
 - Navigate: Interface Options → Serial Port → Login shell over serial? **No** → Enable serial port hardware? **Yes**

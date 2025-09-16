@@ -1,4 +1,3 @@
-text
 # F450 + Pixhawk + Raspberry Pi 3B+ (MAVLink / DroneKit)
 
 A complete, reproducible build of an autonomous quadcopter using an **F450 frame**, **Pixhawk 2.4.8 (ArduCopter)**, and a **Raspberry Pi 3B+** companion computer communicating over **MAVLink**. This project focuses on wiring and software bring-up with Python scripts using DroneKit and MAVProxy for guided flight, mission upload, and telemetry logging.
@@ -45,7 +44,7 @@ text
 
 Enable UART and disable serial login shell via:
 
-```sudo raspi-config```
+sudo raspi-config
 
 text
 
@@ -54,12 +53,13 @@ text
 - UART device is available at `/dev/serial0`.
 - Add your user to the dialout group for serial device permissions:
 
-'''sudo usermod -aG dialout $USER'''
+sudo usermod -aG dialout $USER
 
 text
 
-- Log out and back in (or reboot) for permissions to take effect.
-- Use Python 3.9 for DroneKit support. Create a virtual environment and install dependencies:
+Log out and back in (or reboot) for permissions to take effect.
+
+Use Python 3.9 for DroneKit support. Create a virtual environment and install dependencies:
 
 python3.9 -m venv ~/dronekit-py39
 source ~/dronekit-py39/bin/activate
@@ -228,9 +228,3 @@ Add license information here, e.g., MIT License or any other license you choose.
 For questions or contributions, feel free to open issues or submit pull requests.
 
 ---
-
-Feel free to modify or extend this README to suit your specific needs!
-
----
-
-Would you like me to provide this file in raw Markdown text ready to copy, or any specifi
